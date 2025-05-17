@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>سلة المشتريات</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 10px;
+      margin: 0;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00796b;
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .cart-item {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .cart-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .cart-item-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cart-item-info h2 {
+      font-size: 14px;
+      margin: 0 0 5px;
+      color: #333;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 5px;
+    }
+
+    .controls button {
+      padding: 2px 6px;
+      font-size: 14px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      background: #eee;
+      border-radius: 4px;
+    }
+
+    .controls span {
+      font-size: 14px;
+    }
+
+    .cart-item-info p {
+      font-size: 13px;
+      color: #555;
+      margin: 0;
+    }
+
+    .total {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 16px;
+      color: #00796b;
+      font-weight: bold;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #00796b;
+      color: white;
+      font-size: 16px;
+      border: none;
+      margin-top: 15px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .empty {
+      text-align: center;
+      margin-top: 50px;
+      color: gray;
+      font-size: 14px;
+    }
+
+    .topbar {
+      background: #66d3db;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .topbar .right, .topbar .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search input {
+      padding: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .bottom-nav {
+      display: flex;
+      justify-content: space-between;
+      background: #e6f9fb;
+      padding: 10px 5px;
+      border-top: 1px solid #ccc;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .bottom-nav div {
+      width: 25%;
+      text-align: center;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .bottom-nav div::first-line {
+      font-size: 18px;
+    }
+
+    .checkout-btn{
+        margin-bottom: 200px;
+    }
+  </style>
+</head>
+<body>
+  <!-- الشريط العلوي -->
+  <div class="topbar">
+    <div class="right">
+      <div class="search">
+        <span>🔍</span>
+        <input type="text" placeholder="إبحث">
+      </div>
+    </div>
+    <div class="left">
+      <div>EN</div>
+      <div class="cart" onclick="window.location.href='totalcart.html'" style="cursor:pointer;">
+        🛒<span style="background:white;color:#66d3db;border-radius:50%;padding:2px 6px;margin-right:4px;font-size:12px;"></span>
+      </div>
+    </div>
+  </div>
+
+  <h1>🛒 سلة المشتريات</h1>
+  <div id="cart-container"></div>
+  <div class="total" id="total-price"></div>
+  <button class="checkout-btn" onclick="goToCheckout()">متابعة للدفع</button>
+
+  <!-- الشريط السفلي -->
+  <div class="bottom-nav">
+    <div>📋<br>القائمة</div>
+    <div>📄<br>حالة الطلب</div>
+    <div class="cart-bottom" onclick="window.location.href='totalcart.html'" style="cursor: pointer;">
+      🛒<span style="background:white;color:#22b6c0;border-radius:50%;padding:2px 6px;margin-right:4px;font-size:12px;"></span><br>السلة
+    </div>
+    <div>☰<br>المزيد</div>
+  </div>
+
+  <script>
+    const container = document.getElementById("cart-container");
+    const totalDisplay = document.getElementById("total-price");
+
+    let items = [];
+    try {
+      items = JSON.parse(localStorage.getItem("cartItems")) || [];
+    } catch (e) {
+      items = [];
+    }
+
+    function saveAndRender() {
+      localStorage.setItem("cartItems", JSON.stringify(items));
+      renderCart();
+    }
+
+    function renderCart() {
+      container.innerHTML = "";
+      let total = 0;
+
+      if (items.length === 0) {
+        container.innerHTML = "<p class='empty'>لا توجد منتجات في السلة.</p>";
+        totalDisplay.textContent = "";
+        document.querySelector(".checkout-btn").style.display = "none";
+      } else {
+        document.querySelector(".checkout-btn").style.display = "block";
+      }
+
+      items.forEach((item, index) => {
+        const price = item.price || 0;
+        const subtotal = price * item.count;
+        total += subtotal;
+
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+          <div class="cart-item-info">
+            <h2>${item.name}</h2>
+            <div class="controls">
+              <button onclick="changeCount(${index}, -1)">➖</button>
+              <span>${item.count}</span>
+              <button onclick="changeCount(${index}, 1)">➕</button>
+            </div>
+            <p>السعر: ${subtotal.toFixed(3)} د.ك</p>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+
+      totalDisplay.textContent = `الإجمالي: ${total.toFixed(3)} د.ك`;
+      localStorage.setItem("totalPrice", total.toFixed(3)); // حفظ السعر الإجمالي
+
+      const cartCountSpans = document.querySelectorAll(".cart span");
+      cartCountSpans.forEach(span => {
+        span.textContent = items.length;
+      });
+    }
+
+    function changeCount(index, delta) {
+      items[index].count += delta;
+      if (items[index].count <= 0) {
+        items.splice(index, 1);
+      }
+      saveAndRender();
+    }
+
+    function goToCheckout() {
+      const total = localStorage.getItem("totalPrice") || "0.000";
+      console.log("السعر الإجمالي المحفوظ:", total); // اختياري: للعرض في الكونسول
+      window.location.href = "carttest.html"; // عدّل المسار حسب اسم صفحة الدفع
+    }
+
+    renderCart();
+  </script>
+</body>
+</html>

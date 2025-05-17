@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عروض المنتجات</title>
+  <link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+    header {
+      background-color: #e0f7fa;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #00796b;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* ✅ ثابت: عمودين فقط */
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .product-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+    .product-card img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+    .price {
+      color: #555;
+      margin: 0.5rem 0;
+    }
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+    button {
+      flex: 1;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .add {
+      background-color: #e0f2f1;
+      color: #00695c;
+    }
+    .buy {
+      background-color: #00796b;
+      color: white;
+    }
+    /* الشريط العلوي */
+    .topbar {
+      background: #66d3db;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+    .topbar .right, .topbar .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .right .search {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 20px;
+      padding: 5px 10px;
+      color: #66d3db;
+    }
+    .right .search input {
+      border: none;
+      outline: none;
+      margin-left: 5px;
+    }
+    .main-image img {
+      width: 100%;
+      height: auto;
+    }
+    .center-content {
+      text-align: center;
+      padding: 20px 0;
+      background: white;
+    }
+    .section-title {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #333;
+    }
+    .products {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 15px;
+      background: white;
+      border-top: 1px solid #ddd;
+    }
+    .products div {
+      width: 30%;
+      text-align: center;
+      color: #22b6c0;
+    }
+    .products div img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 5px;
+    }
+    .cta-button {
+      background: #66d3db;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      width: calc(100% - 30px);
+      margin: 20px auto;
+      display: block;
+      border-radius: 10px;
+    }
+    /* الشريط السفلي */
+    .bottom-nav {
+      display: flex;
+      justify-content: space-between;
+      background: #e6f9fb;
+      padding: 10px 5px;
+      border-top: 1px solid #ccc;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    .bottom-nav div {
+      width: 25%;
+      text-align: center;
+      color: #444;
+      font-size: 14px; /* أكبر من السابق */
+      line-height: 1.6;
+    }
+    .bottom-nav div::first-line {
+      font-size: 18px; /* تكبير الإيموجي */
+    }
+    .products {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 15px;
+      background: white;
+      border-top: 1px solid #ddd;
+      gap: 10px;
+    }
+    .product-box {
+      width: 30%;
+      background: #f0fefe;
+      border: 1px solid #d1f3f6;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      color: #22b6c0;
+    }
+    .product-box img {
+      width: 90px;
+      height: 60px;
+      margin-bottom: 8px;
+    }
+    .product-name {
+      font-size: 14px;
+      margin-bottom: 0px;
+      color: #22b6c0;
+      padding: 1px;
+      white-space: nowrap; /* منع النزول لسطر جديد */
+    }
+    h2{
+      text-align: center;
+      font-size: 15px;
+    }
+    .product-grid
+{
+  margin-bottom: 200px;
+}
+  </style>
+</head>
+<body>
+  
+  <!-- الشريط العلوي -->
+  <div class="topbar">
+    <div class="right">
+      <div class="search">
+        <span>🔍</span>
+        <input type="text" placeholder="إبحث">
+      </div>
+    </div>
+    <div class="left">
+      <div>EN</div>
+      <div class="cart" onclick="window.location.href='totalcart.html'">
+        🛒<span style="background:white;color:#66d3db;border-radius:50%;padding:2px 6px;margin-right:4px;font-size:12px;">0</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="product-grid">
+    <div class="product-card">
+      <img src="imgi1.png" alt="منتج 2">
+      <h2>600 مل</h2>
+      <p class="price">30 عبوة 600 مل بالكرتون</p>
+      <p class="price">1 د.ك</p>
+      <div class="buttons">
+        <button class="add">أضف +</button>
+        <button class="buy">اشترِ الآن</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="imgi2.png" alt="منتج 2">
+      <h2>قطرة 24 عبوة</h2>
+      <p class="price">24 عبوة 200 مل بالكرتون</p>
+      <p class="price">0.50 د.ك</p>
+      <div class="buttons">
+        <button class="add">أضف +</button>
+        <button class="buy">اشترِ الآن</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="imgi3.png" alt="منتج 2">
+      <h2>200 مل 48 عبوة</h2>
+      <p class="price">48 عبوة 200 مل بالكرتون</p>
+      <p class="price">0.50 د.ك</p>
+      <div class="buttons">
+        <button class="add">أضف +</button>
+        <button class="buy">اشترِ الآن</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="imgi4.png" alt="منتج 2">
+      <h2>330 مل 40 عبوة</h2>
+      <p class="price">40 عبوة 330 مل بالكرتون</p>
+      <p class="price">0.50 د.ك</p>
+      <div class="buttons">
+        <button class="add">أضف +</button>
+        <button class="buy">اشترِ الآن</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="imgi55.png" alt="منتج 2">
+      <h2>قطرة 40 عبوة</h2>
+      <p class="price">40 عبوة 200 مل بالكرتون</p>
+      <p class="price">0.50 د.ك</p>
+      <div class="buttons">
+        <button class="add">أضف +</button>
+        <button class="buy">اشترِ الآن</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- الشريط السفلي -->
+  <div class="bottom-nav">
+    <div id="divv">📋<br>القائمة</div>
+    <div id="divv1">📄<br>حالة الطلب</div>
+    <div class="cart-bottom" onclick="window.location.href='totalcart.html'" style="cursor: pointer;">
+      🛒<span style="background:white;color:#22b6c0;border-radius:50%;padding:2px 6px;margin-right:4px;font-size:12px;">0</span><br>السلة
+    </div>
+    <div id="divv3">☰<br>المزيد</div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let items = JSON.parse(localStorage.getItem("cartItems") || "[]");
+
+      function updateCartCountDisplay() {
+        const cartCount = items.reduce((sum, item) => sum + item.count, 0);
+        const topCountSpan = document.querySelector(".cart span");
+        const bottomCountSpan = document.querySelector(".cart-bottom span");
+
+        if (topCountSpan) topCountSpan.textContent = cartCount;
+        if (bottomCountSpan) bottomCountSpan.textContent = cartCount;
+
+        localStorage.setItem("cartItems", JSON.stringify(items));
+        localStorage.setItem("cartCount", cartCount);
+      }
+
+      function addToCart(name, image, price) {
+        const existing = items.find(item => item.name === name);
+        if (existing) {
+          existing.count++;
+        } else {
+          items.push({ name, image, count: 1, price });
+        }
+        updateCartCountDisplay();
+      }
+
+      // زر الإضافة
+      document.querySelectorAll(".add").forEach(function (button) {
+        button.addEventListener("click", function () {
+          const card = this.closest(".product-card");
+          const name = card.querySelector("h2").textContent;
+          const image = card.querySelector("img").getAttribute("src");
+          const priceText = card.querySelectorAll(".price")[1].textContent; // مثال: "0.50 د.ك"
+          const price = parseFloat(priceText.replace("د.ك", "").trim());
+          addToCart(name, image, price);
+        });
+      });
+
+      // التحديث عند تحميل الصفحة
+      updateCartCountDisplay();
+    });
+
+    document.getElementById("divv").onclick = function() {
+      window.location.href = "index.html"; // رابط صفحة العروض
+    };
+    document.getElementById("divv1").onclick = function() {
+      window.location.href = "index.html"; // رابط صفحة العروض
+    };
+    document.getElementById("divv2").onclick = function() {
+      window.location.href = "index.html"; // رابط صفحة العروض
+    };
+    document.getElementById("divv3").onclick = function() {
+      window.location.href = "index.html"; // رابط صفحة العروض
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>متجر إلكتروني</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="form1.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+
+
+</head>
+<style>
+ body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+}
+
+.header {
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+#imgheed {
+  width: 150px;
+  margin: 0 auto;
+  display: block;
+}
+
+form#form1 {
+  background: #ffffff;
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form#form1 input[type="text"],
+form#form1 input[type="tel"],
+form#form1 input[type="email"],
+form#form1 textarea,
+form#form1 select {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+form#form1 textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+form#form1 h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+  margin-top: 10px;
+}
+
+form#form1 button {
+  background-color: #041d7e;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+form#form1 button:hover {
+  background-color: #061d84;
+}
+
+#texmom {
+  text-align: center;
+  font-size: 14px;
+  color: rgb(13, 48, 130);
+  margin-top: 10px;
+}
+
+
+#bhone22{
+    text-align: right;
+}
+</style>
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <img id="imgheed" src="logo11.png" >
+    <div class="logo" id="loginot2"></div>
+    </div>
+  </div>
+
+  <div class="box-shadow">
+    <form id="form1">
+      <input type="text" name="name" id="userName" placeholder="الاسم" required>
+      <input type="tel" name="phone"  placeholder="رقم الهاتف" required>
+      <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+
+      <h3>عنوان التوصيل</h3>
+      <textarea name="address2" id="address2" placeholder="المحافظة" required></textarea>
+            <textarea name="address1" id="address1" placeholder="عنوان المنزل" required></textarea>
+
+
+      <h3>موعد التوصيل</h3>
+      <select name="delivery_time" required>
+        <option value="">اختر موعد التوصيل</option>
+        <option value="صباحًا">صباحًا</option>
+        <option value="مساءً">مساءً</option>
+      </select>
+
+      <button id="botend" type="submit">تأكيد العنوان</button>
+      <p id="texmom"></p>
+    </form>
+  </div>
+  <script src="main/form.js"></script>
+
+  <script>
+
+</script>
+
+
+</body>
+</html>

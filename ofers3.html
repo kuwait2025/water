@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>عروض المنتجات</title>
+  <link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+
+    header {
+      background-color: #e0f7fa;
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.5rem;
+      color: #00796b;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .product-card {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .product-card img {
+      width: 100%;
+      max-height: 150px;
+      object-fit: contain;
+      margin-bottom: 0.5rem;
+    }
+
+    .price {
+      color: #555;
+      margin: 0.5rem 0;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    button {
+      flex: 1;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .add {
+      background-color: #e0f2f1;
+      color: #00695c;
+    }
+
+    .buy {
+      background-color: #00796b;
+      color: white;
+    }
+
+    .topbar {
+      background: #66d3db;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .topbar .right, .topbar .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .right .search {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 20px;
+      padding: 5px 10px;
+      color: #66d3db;
+    }
+
+    .right .search input {
+      border: none;
+      outline: none;
+      margin-left: 5px;
+    }
+
+    .bottom-nav {
+      display: flex;
+      justify-content: space-between;
+      background: #e6f9fb;
+      padding: 10px 5px;
+      border-top: 1px solid #ccc;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .bottom-nav div {
+      width: 25%;
+      text-align: center;
+      color: #444;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .bottom-nav div::first-line {
+      font-size: 18px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .product-grid
+{
+  margin-bottom: 200px;
+}
+  </style>
+</head>
+<body>
+
+  <!-- الشريط العلوي -->
+  <div class="topbar">
+    <div class="right">
+      <div class="search">
+        <span>🔍</span>
+        <input type="text" placeholder="إبحث">
+      </div>
+    </div>
+    <div class="left">
+      <div>EN</div>
+      <div class="cart" onclick="window.location.href='totalcart.html'" style="cursor:pointer;">
+        🛒<span style="background:white;color:#66d3db;border-radius:50%;padding:2px 6px;margin-right:4px;font-size:12px;">0</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- المنتجات -->
+  <main class="product-grid">
+
+    <div class="product-card">
+      <img src="imgi11.png" alt="منتج 1">
+      <h2>دبل اب مشروب غازي كولا 24 * 200 مل</h2>
+      <p class="price">الحجم 24 عبوة 200 مل</p>
+      <p class="price">1 د.ك</p>
+      <div class="buttons">
+        <button class="add">أضف +</button>
+        <button class="buy">اشترِ الآن</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="imgi22.png" alt="منتج 2">
+      <h2>دبل اب بدون سكر</h2>
+      <p class="price">الحجم 24 عبوة 200 مل نكهة كولا بدون سكر</p>
+      <p class="price">1 د.ك</p>
+      <div class="buttons">
+        <button class="add">أضف +</button>
+        <button class="buy">اشترِ الآن</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="imgi33.png" alt="منتج 3">
+      <h2>دبل اب مشروب غازي برتقال 24 * 200 مل</h2>
+      <p class="price">الحجم 24 عبوة 200 مل</p>
+      <p class="price">1 د.ك</p>
+      <div class="buttons">
+        <button class="add">أضف +</button>
+        <button class="buy">اشترِ الآن</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="imgi44.png" alt="منتج 4">
+      <h2>دبل اب مشروب غازي بالتوت الأحمر</h2>
+      <p class="price">الحجم 24 عبوة 200 مل</p>
+      <p class="price">1 د.ك</p>
+      <div class="buttons">
+        <button class="add">أضف +</button>
+        <button class="buy">اشترِ الآن</button>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="imgi55.png" alt="منتج 5">
+      <h2>دبل اب مشروب غازي بالليمون</h2>
+      <p class="price">الحجم 24 عبوة 200 مل</p>
+      <p class="price">1 د.ك</p>
+      <div class="buttons">
+        <button class="add">أضف +</button>
+        <button class="buy">اشترِ الآن</button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- الشريط السفلي -->
+  <div class="bottom-nav">
+    <div id="divv">📋<br>القائمة</div>
+    <div id="divv1">📄<br>حالة الطلب</div>
+    <div class="cart-bottom" onclick="window.location.href='totalcart.html'" style="cursor: pointer;">
+      🛒<span style="background:white;color:#22b6c0;border-radius:50%;padding:2px 6px;margin-right:4px;font-size:12px;">0</span><br>السلة
+    </div>
+    <div id="divv3">☰<br>المزيد</div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      let items = JSON.parse(localStorage.getItem("cartItems") || "[]");
+
+      function updateCartCountDisplay() {
+        const cartCount = items.reduce((sum, item) => sum + item.count, 0);
+        const topCountSpan = document.querySelector(".cart span");
+        const bottomCountSpan = document.querySelector(".cart-bottom span");
+
+        if (topCountSpan) topCountSpan.textContent = cartCount;
+        if (bottomCountSpan) bottomCountSpan.textContent = cartCount;
+
+        localStorage.setItem("cartItems", JSON.stringify(items));
+        localStorage.setItem("cartCount", cartCount);
+      }
+
+      function addToCart(name, image, price) {
+        const existing = items.find(item => item.name === name);
+        if (existing) {
+          existing.count++;
+        } else {
+          items.push({ name, image, count: 1, price });
+        }
+        updateCartCountDisplay();
+      }
+
+      document.querySelectorAll(".add").forEach(function (button) {
+        button.addEventListener("click", function () {
+          const card = this.closest(".product-card");
+          const name = card.querySelector("h2").textContent;
+          const image = card.querySelector("img").getAttribute("src");
+          const priceText = card.querySelectorAll(".price")[1].textContent;
+          const price = parseFloat(priceText.replace("د.ك", "").trim());
+          addToCart(name, image, price);
+        });
+      });
+
+      updateCartCountDisplay();
+    });
+
+    document.getElementById("divv").onclick = function () {
+      window.location.href = "index.html";
+    };
+    document.getElementById("divv1").onclick = function () {
+      window.location.href = "orderstatus.html";
+    };
+    document.getElementById("divv3").onclick = function () {
+      window.location.href = "more.html";
+    };
+  </script>
+
+</body>
+</html>

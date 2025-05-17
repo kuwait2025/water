@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نقي للمياه</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      direction: rtl;
+    }
+
+    /* الشريط العلوي */
+    .topbar {
+      background: #66d3db;
+      padding: 10px 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .topbar .right, .topbar .left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .right .search {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 20px;
+      padding: 5px 10px;
+      color: #66d3db;
+    }
+
+    .right .search input {
+      border: none;
+      outline: none;
+      margin-left: 5px;
+    }
+
+    .main-image img {
+      width: 100%;
+      height: auto;
+    }
+
+    .center-content {
+      text-align: center;
+      padding: 20px 0;
+      background: white;
+    }
+
+    .section-title {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #333;
+    }
+
+    .products {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 15px;
+      background: white;
+      border-top: 1px solid #ddd;
+    }
+
+    .products div {
+      width: 30%;
+      text-align: center;
+      color: #22b6c0;
+    }
+
+    .products div img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 5px;
+    }
+
+    .cta-button {
+      background: #66d3db;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      width: calc(100% - 30px);
+      margin: 20px auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* الشريط السفلي */
+   .bottom-nav {
+  display: flex;
+  justify-content: space-between;
+  background: #e6f9fb;
+  padding: 10px 5px;
+  border-top: 1px solid #ccc;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.bottom-nav div {
+  width: 25%;
+  text-align: center;
+  color: #444;
+  font-size: 14px; /* أكبر من السابق */
+  line-height: 1.6;
+}
+
+.bottom-nav div::first-line {
+  font-size: 18px; /* تكبير الإيموجي */
+}
+
+    .products {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 15px;
+  background: white;
+  border-top: 1px solid #ddd;
+  gap: 10px;
+}
+
+.product-box {
+  width: 30%;
+  background: #f0fefe;
+  border: 1px solid #d1f3f6;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #22b6c0;
+}
+
+.product-box img {
+  width: 90px;
+  height: 60px;
+  margin-bottom: 8px;
+}
+
+.product-name {
+  font-size: 14px;
+  margin-bottom: 0px;
+  color: #22b6c0;
+  padding: 1px;
+
+  white-space: nowrap;       /* منع النزول لسطر جديد */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- الشريط العلوي -->
+  <div class="topbar">
+    <div class="right">
+      <div class="search">
+        <span>🔍</span>
+        <input type="text" placeholder="إبحث">
+      </div>
+    </div>
+    <div class="left">
+      <div>EN</div>
+      <div class="cart">🛒<span style="background:white;color:#66d3db;border-radius:50%;padding:2px 6px;margin-right:4px;font-size:12px;">0</span></div>
+    </div>
+  </div>
+
+  <!-- صورة المنتج -->
+  <div class="main-image">
+    <img src="body.jpg" alt="مياه نقي">
+  </div>
+
+  <!-- المحتوى المركزي -->
+ <!-- قسم المنتجات -->
+<div class="products">
+  <div class="product-box" id="box1">
+    <img src="img22.jpg" alt="عروض">
+    <div class="product-name">عروض</div>
+    <small>10 منتجات</small>
+  </div>
+  <div class="product-box" id="box2">
+    <img src="img1.jpg" alt="مياه نقي">
+    <div class="product-name">مياه نقي</div>
+    <small>5 منتجات</small>
+  </div>
+  <div class="product-box" id="box3">
+    <img src="imgg33.jpg" alt="مياه غازية">
+    <div class="product-name">مياه غازية</div>
+    <small>3 منتجات</small>
+  </div>
+</div>
+
+  <button class="cta-button">ابدأ الطلب</button>
+
+  <!-- الشريط السفلي -->
+  <div class="bottom-nav">
+    <div id="divv">📋<br>القائمة</div>
+    <div id="divv1">📄<br>حالة الطلب</div>
+    <div id="divv2">🛒<br>السلة</div>
+    <div id="divv3">☰<br>المزيد</div>
+  </div>
+<script>
+  document.getElementById("box1").onclick = function() {
+    window.location.href = "ofers.html"; // رابط صفحة العروض
+  };
+
+  document.getElementById("box2").onclick = function() {
+    window.location.href = "ofers2.html"; // رابط صفحة مياه نقي
+  };
+
+  document.getElementById("box3").onclick = function() {
+    window.location.href = "ofers3.html"; // رابط المياه الغازية
+  };
+
+
+    document.getElementById("divv").onclick = function() {
+    window.location.href = "index.html"; // رابط صفحة العروض
+  };
+document.getElementById("divv1").onclick = function() {
+    window.location.href = "index.html"; // رابط صفحة العروض
+  };
+ document.getElementById("divv2").onclick = function() {
+    window.location.href = "index.html"; // رابط صفحة العروض
+  };
+
+  document.getElementById("divv3").onclick = function() {
+    window.location.href = "index.html"; // رابط صفحة العروض
+  };
+</script>
+
+</body>
+
+</html>
